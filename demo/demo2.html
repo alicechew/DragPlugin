@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag plugin demo2</title>
+    <style>
+body, ul, li, p{margin: 0; padding: 0;list-style: none;}
+.container{position:absolute;width: 600px;height:300px;margin:auto;top:0;bottom:0;left:0;right:0;border:1px solid #f69c55;}
+.main,.side{float:left;}
+.item{width:360px;height:50px;margin:20px;background-color: #f69c55;color:#fff;font-size: 20px;line-height: 50px;text-align: center;}
+.side{padding:50px 10px;}
+.side p{margin-top:20px;font-family: 'arial';}
+.side .title{font-weight: bold;}
+
+.dragElClass{opacity: 0.6;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <ul class="list" id="js_dragList">
+                <li class="item drag-item">drag item 1</li>
+                <li class="item drag-item">drag item 2</li>
+                <li class="item drag-item">drag item 3</li>
+                <li class="item drag-item">drag item 4</li>
+            </ul>
+        </div>
+        <div class="side">
+            <p class="title">callback:</p>
+            <p>start position：<br/><span id="js_startPos">null</span></p>
+            <p>current position：<br/><span id="js_curPos">null</span></p>
+            <p>drop position：<br/><span id="js_dropPos">null</span></p>
+        </div>
+    </div>
+
+    <script src="../src/drag.js"></script>
+    <script>
+    var list = document.getElementById('js_dragList'),
+        startPos = document.getElementById('js_startPos'),
+        curPos = document.getElementById('js_curPos'),
+        dropPos = document.getElementById('js_dropPos'),
+
+        drag = new Drag(list,{
+            ifHide:true,
+            /*回调函数*/
+            onDrag: function(){
+                startPos.innerHTML = 'X:' + drag.state.startX + ' , Y:' + drag.state.startY;
+            },
+            onMove:function(){
+                curPos.innerHTML = 'X:' + drag.state.curX + ' , Y:' + drag.state.curY;
+            },
+            onDrop:function(){
+                dropPos.innerHTML = 'X:' + drag.state.dropX + ' , Y:' + drag.state.dropY;
+            }
+        });
+    </script>
+</body>
+</html>

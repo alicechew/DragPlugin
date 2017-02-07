@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>doc</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
+/* Author: Nicolas Hery - http://nicolashery.com */
+/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
+/* Source: https://github.com/nicolahery/markdownpad-github */
+
+/* RESET
+=============================================================================*/
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/* BODY
+=============================================================================*/
+
+body {
+  font-family: Helvetica, arial, freesans, clean, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+body>*:first-child {
+  margin-top: 0 !important;
+}
+
+body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* BLOCKS
+=============================================================================*/
+
+p, blockquote, ul, ol, dl, table, pre {
+  margin: 15px 0;
+}
+
+/* HEADERS
+=============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
+  font-size: inherit;
+}
+
+h1 {
+  font-size: 28px;
+  color: #000;
+}
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+  color: #000;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+h6 {
+  color: #777;
+  font-size: 14px;
+}
+
+body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
+  margin-top: 10px;
+}
+
+/* LINKS
+=============================================================================*/
+
+a {
+  color: #4183C4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* LISTS
+=============================================================================*/
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li > :first-child, 
+ol li > :first-child, 
+ul li ul:first-of-type, 
+ol li ol:first-of-type, 
+ul li ol:first-of-type, 
+ol li ul:first-of-type {
+  margin-top: 0px;
+}
+
+ul ul, ul ol, ol ol, ol ul {
+  margin-bottom: 0;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+  padding: 0;
+  margin: 15px 0 5px;
+}
+
+dl dt:first-child {
+  padding: 0;
+}
+
+dl dt>:first-child {
+  margin-top: 0px;
+}
+
+dl dt>:last-child {
+  margin-bottom: 0px;
+}
+
+dl dd {
+  margin: 0 0 15px;
+  padding: 0 15px;
+}
+
+dl dd>:first-child {
+  margin-top: 0px;
+}
+
+dl dd>:last-child {
+  margin-bottom: 0px;
+}
+
+/* CODE
+=============================================================================*/
+
+pre, code, tt {
+  font-size: 12px;
+  font-family: Consolas, "Liberation Mono", Courier, monospace;
+}
+
+code, tt {
+  margin: 0 0px;
+  padding: 0px 0px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px;
+}
+
+pre>code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px;
+}
+
+pre code, pre tt {
+  background-color: transparent;
+  border: none;
+}
+
+kbd {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-color: #DDDDDD;
+    background-image: linear-gradient(#F1F1F1, #DDDDDD);
+    background-repeat: repeat-x;
+    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+    border-image: none;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: 10px;
+    padding: 1px 4px;
+}
+
+/* QUOTES
+=============================================================================*/
+
+blockquote {
+  border-left: 4px solid #DDD;
+  padding: 0 15px;
+  color: #777;
+}
+
+blockquote>:first-child {
+  margin-top: 0px;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0px;
+}
+
+/* HORIZONTAL RULES
+=============================================================================*/
+
+hr {
+  clear: both;
+  margin: 15px 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 4px solid #ddd;
+  padding: 0;
+}
+
+/* TABLES
+=============================================================================*/
+
+table th {
+  font-weight: bold;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 6px 13px;
+}
+
+table tr {
+  border-top: 1px solid #ccc;
+  background-color: #fff;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* IMAGES
+=============================================================================*/
+
+img {
+  max-width: 100%
+}
+</style>
+</head>
+<body>
+<h1>dragPlugin 控件说明</h1>
+
+<hr />
+
+<h2>Features</h2>
+
+<ul>
+<li>PC端（ie8+）、移动端适用</li>
+<li>支持水平列表和竖直列表</li>
+<li>拖拽项可以为任意类型元素</li>
+<li>支持动态列表</li>
+<li>支持dragover动画（ie10+）</li>
+</ul>
+
+<h2>Usage</h2>
+
+<p>html:</p>
+
+<pre><code>&lt;ul id="js_dragList"&gt;
+    &lt;li class="drag-item"&gt;item1&lt;/li&gt;
+    &lt;li class="drag-item"&gt;item2&lt;/li&gt;
+    &lt;li class="drag-item"&gt;item3&lt;/li&gt;
+&lt;ul&gt;
+</code></pre>
+
+<p>js:</p>
+
+<pre><code>var el= document.getElementById('js_dragList');
+var drag = new Drag(el);
+</code></pre>
+
+<p>拖拽项不仅限于<code>&lt;li&gt;</code>，可以是任何元素，使用时需要对要拖拽的item赋类名（可在options中配置），默认'drag-item'。传入首参数为拖拽项父容器。</p>
+
+<h2>Options</h2>
+
+<p>控件配置参数及默认值如下：</p>
+
+<pre><code>var drag = new Drag(list, {
+    dragItemClass: 'drag-item',    //要拖拽的item的类名
+    chosenElClass: 'chosenEl',    //当前选中item的类名
+    dragElClass: 'dragElClass',    //拖拽浮层类名
+    dragElId: 'dragElId',    //拖拽浮层id
+    handle: null,   //如果要启用handle，传入handle类名
+    enableDrag: true,    //是否启用拖拽
+    pointerX: 0,    //px，拖拽浮层和鼠标的水平位置差
+    pointerY: 0,    //px，拖拽浮层和鼠标的垂直位置差
+    ifHide: false,    //拖拽时是否隐藏选中item
+    minMove: 3,    //px，拖拽时的最小位移阈值，鼠标移动小于该阈值时不作move相关操作
+    ifAnimated: false,  //是否启用dragover动画
+    aniDuration: 300,   //ms,dragover动画持续时长
+
+    onDrag: function(){},    //回调函数，拖拽开始时执行
+    onMove: function(){},    //回调函数，拖拽过程中执行
+    onDrop: function(){},    //回调函数，拖拽释放时执行
+});
+</code></pre>
+
+<p>注意：ie9以下（包括ie9）不支持dragover动画。</p>
+
+<p>自定义配置<br />
+<a href="demo/demo1.html">demo1</a></p>
+
+<p>css：</p>
+
+<pre><code>.ghost-item{opacity:0.5;}
+</code></pre>
+
+<p>js：</p>
+
+<pre><code>var listH = document.getElementById('js_listH'),
+    listV = document.getElementById('js_listV'),
+    dragH = new Drag(listH),
+    dragV = new Drag(listV,{
+            /*自定义拖拽item类名（默认：drag-item）*/
+            dragItemClass: 'draggable',
+
+            /*隐藏选中项*/
+            ifHide: true,
+
+            /*自定义拖拽浮层类名（默认：dragElClass)*/
+            dragElClass: 'ghost-item',
+
+            /*启用拖拽手柄，类名为drag-handle
+            注意：handle必须是拖拽item的子元素（或其本身）*/
+            handle: 'drag-handle',
+
+            /*启用dragover动画*/
+            ifAnimated: true
+    });
+</code></pre>
+
+<h3>callback</h3>
+
+<ul>
+<li><p><strong>onDrag: function(){}</strong><br />
+回调函数，拖拽开始时执行<br />
+eg：</p>
+
+<pre><code>    var drag = new Drag(el, {
+        onDrag: function(){  
+        /* this.state.startX: 拖拽开始时pointer水平坐标
+            this.state.startY: 拖拽开始时pointer垂直坐标
+        */  
+        var x = drag.state.startX,
+            y = drag.state.startY;
+
+        console.log('start position: (' + x + ',' + y +')');
+        }
+    });
+</code></pre></li>
+<li><p><strong>onMove: function(){}</strong><br />
+回调函数，拖拽过程中执行<br />
+eg：  </p>
+
+<pre><code>var drag = new Drag(el, {
+    onMove: function(){
+    /* this.state.curX: 拖拽过程中pointer水平坐标
+        this.state.curY: 拖拽过程中pointer垂直坐标*/
+    var x = drag.state.curX,
+        y = drag.state.curY;
+
+    console.log('current position: (' + x + ',' + y +')');
+    }
+});
+</code></pre></li>
+<li><p><strong>onDrop: function(){}</strong><br />
+回调函数，拖拽释放时执行<br />
+eg：  </p>
+
+<pre><code>var drag = new Drag(el, {
+    onDrop: function(){
+    /* this.state.dropX: 拖拽释放时pointer水平坐标
+        this.state.dropY: 拖拽释放时pointer垂直坐标*/
+    var x = drag.state.dropX,
+        y = drag.state.dropY;
+
+    console.log('drop position: (' + x + ',' + y +')');
+    }
+});
+</code></pre></li>
+</ul>
+
+<p>回调函数调用demo： 
+<a href="demo/demo2.html">demo2</a></p>
+
+<h3>state 状态参数</h3>
+
+<p>记录控件相关参数，可供回调函数调用（eg.<code>drag.state.direction</code>）：  </p>
+
+<ul>
+<li><p><strong>direction {String}</strong><br />
+列表方向，有两种值:</p>
+
+<ul>
+<li>vertical：垂直列表，direction值为'vertical'；</li>
+<li>horizontal：当item项应用了<code>float: left</code>，<code>display: inline-block</code>，<code>display: inline</code>其中一种样式时，列表判断为水平，direction值为'horizontal'。</li>
+</ul></li>
+<li><p><strong>itemCount {Number}</strong><br />
+可拖拽item数目</p></li>
+<li><p><strong>ifDragging {Boolean}</strong><br />
+是否处在拖拽状态。拖拽开始时值为<code>true</code>，释放时值变为<code>false</code>。</p></li>
+<li><p><strong>innerX / innerY {Number}</strong><br />
+拖拽开始时，pointer位于item内部的水平/垂直位置。</p></li>
+<li><p><strong>startX / startY {Number}</strong><br />
+拖拽开始时，pointer的位于视窗的水平/垂直坐标。</p></li>
+<li><p><strong>curX / curY {Number}</strong><br />
+拖拽过程中，pointer位于视窗的水平/垂直坐标。</p></li>
+<li><p><strong>dropX / dropY {Number}</strong><br />
+拖拽释放时，pointer位于视窗的水平/垂直坐标。</p></li>
+</ul>
+
+<h2>Method</h2>
+
+<ul>
+<li><p><strong>enableDrag()</strong><br />
+启用拖拽<br />
+<code>drag.enableDrag();</code></p></li>
+<li><p><strong>disableDrag()</strong><br />
+禁用拖拽<br />
+<code>drag.disableDrag();</code></p></li>
+<li><p><strong>update()</strong><br />
+更新拖拽列表（更新item数目和列表方向）<br />
+<code>drag.update();</code></p></li>
+</ul>
+
+<p>API调用demo：<a href="demo/demo3.html">demo3</a>  </p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

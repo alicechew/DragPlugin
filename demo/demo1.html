@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>drag plugin demo1</title>
+    <style>
+body, ul, li, p{margin: 0; padding: 0;}
+.container{width: 800px; margin: 80px auto;}
+.left,.right{float:left;}
+.left{width:400px;}
+.title{font-size: 25px;text-align: center;line-height: 50px;font-family: 'Microsoft Yahei';}
+.detail{text-align: center;}
+.list-h{width:300px;margin:0 auto;font-size: 0;}
+.item{margin-top: 20px;margin-left: 10px; color: #fff; list-style: none; text-align: center;cursor: pointer;}
+.list-h .item{display:inline-block; width: 80px; height: 80px; font-size: 30px;line-height: 80px;background-color: #fff;color:#f69c55;border: 1px solid #f69c55;}
+.list-h img{display:inline-block;width: 81px;height:81px;margin-top: 20px;margin-left: 10px;vertical-align: -29px;}
+.list-v .item{width:360px;height:50px;margin:20px;background-color: #f69c55;color:#fff;font-size: 20px;line-height: 50px;text-align: center;}
+.list-v .box{float: left; width: 40px; height: 40px; margin: 5px; background-color: #fff;}
+.list-v .text{line-height: 50px;}
+.list-v img{width: 40px; height: 40px;}
+
+.ghost-item{opacity:0.5;}
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <!-- 水平列表 -->
+            <p class="title">水平列表</p>
+            <p class="detail">拖拽项为li</p>
+            <ul class="list-h" id="js_listH">
+                <li class="item item1 drag-item">1</li>
+                <li class="item item2 drag-item">2</li>
+                <li class="item item3 drag-item">3</li>
+                <li class="item item4 drag-item">4</li>
+                <li class="item item5 drag-item">5</li>
+                <img src="arrow.png" alt="pic" class="drag-item">
+            </ul>
+        </div>
+        <div class="right">
+            <!-- 竖直列表 -->
+            <p class="title">竖直列表</p>
+            <p class="detail">拖拽项为div<br>启用拖拽手柄<br>启用dragover动画</p>
+            <div class="list-v" id="js_listV">
+                <div class="item draggable">
+                    <div class="box drag-handle" >
+                        <img src="arrow.png" alt=""  >
+                    </div>
+                    <div>
+                        <a href="http://www.sina.com.cn" class="text">this is a link</a>
+                    </div>
+                </div>
+                <div class="item draggable">
+                    <div class="box drag-handle" >
+                        <img src="arrow.png" alt="" >
+                    </div>
+                    <p class="text">drag item</p>
+                </div>
+                <div class="item draggable">
+                    <div class="box drag-handle" >
+                        <img src="arrow.png" alt="" >
+                    </div>
+                    <p class="text">drag item</p>
+                </div>
+                <div class="item draggable">
+                    <div class="box drag-handle" >
+                        <img src="arrow.png" alt="" >
+                    </div>
+                    <p class="text">drag item</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../src/drag.js"></script>
+    <script>
+    var listH = document.getElementById('js_listH'),
+        listV = document.getElementById('js_listV'),
+        dragH = new Drag(listH),
+        dragV = new Drag(listV, {
+            /*自定义拖拽item类名（默认：drag-item）*/
+            dragItemClass: 'draggable',
+
+            /*隐藏选中项*/
+            ifHide: true,
+
+            /*自定义拖拽浮层类名（默认：dragElClass)*/
+            dragElClass: 'ghost-item',
+
+            /*启用拖拽手柄，类名为drag-handle
+            注意：handle必须是拖拽item的子元素（或其本身）*/
+            handle: 'drag-handle',
+
+            /*启用dragover动画*/
+            ifAnimated: true
+        });
+    </script>
+</body>
+
+</html>
