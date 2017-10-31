@@ -1,483 +1,554 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>doc</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<style type="text/css">
-/* GitHub stylesheet for MarkdownPad (http://markdownpad.com) */
-/* Author: Nicolas Hery - http://nicolashery.com */
-/* Version: b13fe65ca28d2e568c6ed5d7f06581183df8f2ff */
-/* Source: https://github.com/nicolahery/markdownpad-github */
+  <title>Draaag</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="lib/prism.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico" rel="stylesheet">
+  <script src="lib/prism.js"></script>
+  <script src="src/draaag.js"></script>
 
-/* RESET
-=============================================================================*/
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-size: 16px;
+      font-family: 'Open Sans', sans-serif;
+    }
 
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
+    .clearfix::after {
+      content: ' ';
+      display: block;
+      height: 0;
+      font-size: 0;
+      visibility: hidden;
+      clear: both;
+    }
 
-/* BODY
-=============================================================================*/
+    .container {
+      padding: 0 15em;
+    }
 
-body {
-  font-family: Helvetica, arial, freesans, clean, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #333;
-  background-color: #fff;
-  padding: 20px;
-  max-width: 960px;
-  margin: 0 auto;
-}
+    header {
+      background-color: #3B99D8;
+      padding: 5em;
+    }
 
-body>*:first-child {
-  margin-top: 0 !important;
-}
+    .logo {
+      color: #fff;
+      font-family: 'Pacifico', cursive;
+      font-size: 4em;
+      margin: 0;
+      text-align: center;
+    }
 
-body>*:last-child {
-  margin-bottom: 0 !important;
-}
+    .description {
+      font-size: 1.2em;
+      color: #fff;
+      text-align: center;
+    }
 
-/* BLOCKS
-=============================================================================*/
+    .section-title {
+      color: #3B99D8;
+      font-family: 'Pacifico', cursive;
+      font-size: 2em;
+      text-align: center;
+    }
 
-p, blockquote, ul, ol, dl, table, pre {
-  margin: 15px 0;
-}
+    .demo1 {
+      border-radius: 5px;
+      background-color: #88c3ea;
+    }
 
-/* HEADERS
-=============================================================================*/
+    .demo1 ul {
+      position: relative;
+      padding: .8em 0;
+    }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-}
+    .demo1 li {
+      width: 10em;
+      margin: 1em auto;
+      list-style: none;
+      text-align: center;
+      background-color: #fff;
+      color: #88c3ea;
+      font-size: 1.5em;
+      line-height: 1.5em;
+      border: 5px solid #fff;
+      border-radius: 3px;
+    }
 
-h1 tt, h1 code, h2 tt, h2 code, h3 tt, h3 code, h4 tt, h4 code, h5 tt, h5 code, h6 tt, h6 code {
-  font-size: inherit;
-}
+    .demo1 .dragElClass {
+      opacity: .7;
+    }
 
-h1 {
-  font-size: 28px;
-  color: #000;
-}
+    .demo-title {
+      font-size: 1.5em;
+      line-height: 1.5em;
+      margin: 0 0 1em 0;
+      color: #88c3ea;
+      text-align: center;
+    }
 
-h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #ccc;
-  color: #000;
-}
+    .demos .line {
+      display: block;
+      width: 100%;
+      margin: 2.5em;
+      border-bottom: solid 1px #88c3ea;
+    }
 
-h3 {
-  font-size: 18px;
-}
+    .demo-h {
+      padding: 0;
+      margin: 0 auto;
+      width: 37em;
+    }
 
-h4 {
-  font-size: 16px;
-}
+    .demo-h .item {
+      list-style: none;
+      float: left;
+      width: 5em;
+      height: 5em;
+      margin-left: 1em;
+      line-height: 5em;
+      background-color: #88c3ea;
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      border-radius: 3px;
+    }
 
-h5 {
-  font-size: 14px;
-}
+    .demo-handle .handle {
+      float: left;
+      width: 3em;
+      height: 3em;
+      background-color: #88c3ea;
+      border-radius: 3px;
+    }
 
-h6 {
-  color: #777;
-  font-size: 14px;
-}
+    .demo-handle .handle:hover {
+      background-color: #3b99d8;
+    }
 
-body>h2:first-child, body>h1:first-child, body>h1:first-child+h2, body>h3:first-child, body>h4:first-child, body>h5:first-child, body>h6:first-child {
-  margin-top: 0;
-  padding-top: 0;
-}
+    .demo-han {
+      margin: 0 auto;
+      width: 19.5em;
+    }
 
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0;
-}
+    .demo-han-item {
+      margin-bottom: 1.5em;
+    }
 
-h1+p, h2+p, h3+p, h4+p, h5+p, h6+p {
-  margin-top: 10px;
-}
+    .demo-han .item-content {
+      float: left;
+      margin-left: 1em;
+      width: 15em;
+      line-height: 3em;
+      background-color: #88c3ea;
+      color: #fff;
+      text-align: center;
+      border-radius: 3px;
+    }
 
-/* LINKS
-=============================================================================*/
+    .demo-cb,
+    .status,
+    .demo-met,
+    .control {
+      float: left;
+    }
 
-a {
-  color: #4183C4;
-  text-decoration: none;
-}
+    .demo-cb,
+    .demo-met {
+      width: 55%;
+    }
 
-a:hover {
-  text-decoration: underline;
-}
+    .status,
+    .control {
+      width: 35%;
+      margin-top: 1em;
+      color: #3B99D8;
+    }
 
-/* LISTS
-=============================================================================*/
+    .demo-cb-item,
+    .demo-met-item {
+      list-style: none;
+      width: 15em;
+      line-height: 2.5em;
+      margin: 1em auto;
+      text-align: center;
+      background-color: #88c3ea;
+      color: #fff;
+      border-radius: 3px;
+    }
 
-ul, ol {
-  padding-left: 30px;
-}
+    .status .title {
+      font-weight: 700;
+    }
 
-ul li > :first-child, 
-ol li > :first-child, 
-ul li ul:first-of-type, 
-ol li ol:first-of-type, 
-ul li ol:first-of-type, 
-ol li ul:first-of-type {
-  margin-top: 0px;
-}
+    .parameters {
+      padding: 0;
+      list-style: none;
+    }
 
-ul ul, ul ol, ol ol, ol ul {
-  margin-bottom: 0;
-}
+    .parameter .title {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: #3B99D8;
+    }
 
-dl {
-  padding: 0;
-}
+    .parameter .type {
+      margin-left: 1em;
+      color: #88c3ea;
+    }
 
-dl dt {
-  font-size: 14px;
-  font-weight: bold;
-  font-style: italic;
-  padding: 0;
-  margin: 15px 0 5px;
-}
+    .control .btn {
+      display: block;
+      width: 10em;
+      border: 1px solid #88c3ea;
+      line-height: 1.5em;
+      margin: 1em 0;
+      font-size: 1em;
+      background-color: #fff;
+      color: #88c3ea;
+      border-radius: 3px;
+      cursor: pointer;
+    }
 
-dl dt:first-child {
-  padding: 0;
-}
+    .btn.off,
+    .btn.off:active {
+      background-color: #fff;
+      border: 2px solid #dbdbdb;
+      color: #dbdbdb;
+      cursor: default;
+    }
 
-dl dt>:first-child {
-  margin-top: 0px;
-}
+    .ribbon{
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
 
-dl dt>:last-child {
-  margin-bottom: 0px;
-}
-
-dl dd {
-  margin: 0 0 15px;
-  padding: 0 15px;
-}
-
-dl dd>:first-child {
-  margin-top: 0px;
-}
-
-dl dd>:last-child {
-  margin-bottom: 0px;
-}
-
-/* CODE
-=============================================================================*/
-
-pre, code, tt {
-  font-size: 12px;
-  font-family: Consolas, "Liberation Mono", Courier, monospace;
-}
-
-code, tt {
-  margin: 0 0px;
-  padding: 0px 0px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px;
-}
-
-pre>code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent;
-}
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #ccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px;
-}
-
-pre code, pre tt {
-  background-color: transparent;
-  border: none;
-}
-
-kbd {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-color: #DDDDDD;
-    background-image: linear-gradient(#F1F1F1, #DDDDDD);
-    background-repeat: repeat-x;
-    border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
-    border-image: none;
-    border-radius: 2px 2px 2px 2px;
-    border-style: solid;
-    border-width: 1px;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-    line-height: 10px;
-    padding: 1px 4px;
-}
-
-/* QUOTES
-=============================================================================*/
-
-blockquote {
-  border-left: 4px solid #DDD;
-  padding: 0 15px;
-  color: #777;
-}
-
-blockquote>:first-child {
-  margin-top: 0px;
-}
-
-blockquote>:last-child {
-  margin-bottom: 0px;
-}
-
-/* HORIZONTAL RULES
-=============================================================================*/
-
-hr {
-  clear: both;
-  margin: 15px 0;
-  height: 0px;
-  overflow: hidden;
-  border: none;
-  background: transparent;
-  border-bottom: 4px solid #ddd;
-  padding: 0;
-}
-
-/* TABLES
-=============================================================================*/
-
-table th {
-  font-weight: bold;
-}
-
-table th, table td {
-  border: 1px solid #ccc;
-  padding: 6px 13px;
-}
-
-table tr {
-  border-top: 1px solid #ccc;
-  background-color: #fff;
-}
-
-table tr:nth-child(2n) {
-  background-color: #f8f8f8;
-}
-
-/* IMAGES
-=============================================================================*/
-
-img {
-  max-width: 100%
-}
-</style>
+    .ribbon img{
+      width: 12em;
+      height: auto;
+    }
+  </style>
 </head>
+
 <body>
-<h1>dragPlugin 控件说明</h1>
+  <a class="ribbon" href="https://github.com/shuangq/DragPlugin" target="_blank">
+    <img src="./img/gh-ribbon.png" alt="Fork me on Github">
+  </a>
+  <header>
+    <h1 class="logo">Draaag</h1>
+    <p class="description">A Javascript drag and drop plugin</p>
+  </header>
+  <div class="container">
+    <section class="feature">
+      <h5 class="section-title">Feature</h5>
+      <ul>
+        <li>You can use Draaag to create draggable and sortble list easily</li>
+        <li>Browser support: desktop (IE8+) and touch device</li>
+        <li>Support vertical list and horizontal list</li>
+        <li>Also works for editable list</li>
+        <li>You can set the whole item draggable, or use a handle</li>
+        <li>Support dragover animation</li>
+        <li>No jQuery required</li>
+      </ul>
+    </section>
+    <section class="basic-usage">
+      <h5 class="section-title">Getting Started</h5>
+      <p>Set up your HTML markup.</p>
+      <pre>
+      <code class="language-markup">
+        <script type="text/plain">
+        <ul id="dragList">
+          <li class="drag-item">item1</li>
+          <li class="drag-item">item2</li>
+          <li class="drag-item">item3</li>
+        <ul>
+        </script>
+      </code>
+    </pre>
+      <p>Also your script:</p>
+      <pre>
+      <code class="language-javascript">
+        var el = document.getElementById('dragList');
+        var dragList = new Draaag(el);
+      </code>
+    </pre>
+      <div class="demo1">
+        <ul id="dragList">
+          <li class="drag-item">item1</li>
+          <li class="drag-item">item2</li>
+          <li class="drag-item">item3</li>
+        </ul>
+        <script>
+          var el1 = document.getElementById('dragList');
+          var demo1 = new Draaag(el1);
+        </script>
+      </div>
+      <p>You can set anything to the draggable item by giving it a classname "drag-item". If you don't like this name you can also change it in the config option.</p>
+    </section>
 
-<hr />
+    <section class="customization">
+      <h5 class="section-title">Customization</h5>
+      <p>Here is all the configuration options and their default value:</p>
+      <pre>
+        <code class="language-javascript">
+  var drag = new Draaag(list, {
+           dragItemClass: 'drag-item',
+           // classname of the draggable items
 
-<h2>Features</h2>
+           chosenElClass: 'chosenEl',
+           // classname of the current dragging item
 
-<ul>
-<li>PC端（ie8+）、移动端适用</li>
-<li>支持水平列表和竖直列表</li>
-<li>拖拽项可以为任意类型元素</li>
-<li>支持动态列表</li>
-<li>支持dragover动画（ie10+）</li>
-</ul>
+           dragElClass: 'dragElClass',
+           // classname of the appended ghost layer
 
-<h2>Usage</h2>
+           dragElId: 'dragElId',
+           // id of the appended ghost layer
 
-<p>html:</p>
+           handle: null,
+           // if you want to use handle, set the classname of the handles here
 
-<pre><code>&lt;ul id="js_dragList"&gt;
-    &lt;li class="drag-item"&gt;item1&lt;/li&gt;
-    &lt;li class="drag-item"&gt;item2&lt;/li&gt;
-    &lt;li class="drag-item"&gt;item3&lt;/li&gt;
-&lt;ul&gt;
-</code></pre>
+           enableDrag: true,
+           // if set to false, items are not draggable
 
-<p>js:</p>
+           pointerX: 0,
+           // the horizontal distance between the pointer and the ghost; px
 
-<pre><code>var el= document.getElementById('js_dragList');
-var drag = new Drag(el);
-</code></pre>
+           pointerY: 0,
+           // the vertical distance between the pointer and the ghost; px
 
-<p>拖拽项不仅限于<code>&lt;li&gt;</code>，可以是任何元素，使用时需要对要拖拽的item赋类名（可在options中配置），默认'drag-item'。传入首参数为拖拽项父容器。</p>
+           ifHide: false,
+           // whether to hide the original item when it is being dragged
 
-<h2>Options</h2>
+           minMove: 3,
+           // the drag sensitivity; px
 
-<p>控件配置参数及默认值如下：</p>
+           ifAnimated: false,
+           // whether to enable dragover animation
+           // * Not supported in IE9 and older version *
 
-<pre><code>var drag = new Drag(list, {
-    dragItemClass: 'drag-item',    //要拖拽的item的类名
-    chosenElClass: 'chosenEl',    //当前选中item的类名
-    dragElClass: 'dragElClass',    //拖拽浮层类名
-    dragElId: 'dragElId',    //拖拽浮层id
-    handle: null,   //如果要启用handle，传入handle类名
-    enableDrag: true,    //是否启用拖拽
-    pointerX: 0,    //px，拖拽浮层和鼠标的水平位置差
-    pointerY: 0,    //px，拖拽浮层和鼠标的垂直位置差
-    ifHide: false,    //拖拽时是否隐藏选中item
-    minMove: 3,    //px，拖拽时的最小位移阈值，鼠标移动小于该阈值时不作move相关操作
-    ifAnimated: false,  //是否启用dragover动画
-    aniDuration: 300,   //ms,dragover动画持续时长
+           aniDuration: 300,
+           // duration of the dragover animation; ms
 
-    onDrag: function(){},    //回调函数，拖拽开始时执行
-    onMove: function(){},    //回调函数，拖拽过程中执行
-    onDrop: function(){},    //回调函数，拖拽释放时执行
-});
-</code></pre>
+           // CALLBACKS
+           onDrag: function(){},    // when drag starts
+           onMove: function(){},    // while dragging
+           onDrop: function(){},    // when drop
+       });
+        </code>
+      </pre>
+    </section>
+    <section class="demos">
+      <h5 class="section-title">Demos</h5>
+      <div class="demo2">
+        <h5 class="demo-title">Horizontal List</h5>
+        <div class="horizontal">
+          <ul class="demo-h clearfix" id="js_listH">
+            <li class="item item1 demo-h-item">1</li>
+            <li class="item item2 demo-h-item">2</li>
+            <li class="item item3 demo-h-item">3</li>
+            <li class="item item4 demo-h-item">4</li>
+            <li class="item item5 demo-h-item">5</li>
+            <li class="item item5 demo-h-item">6</li>
+          </ul>
+          <script>
+            var listH = document.getElementById('js_listH');
+            var demoDragHor = new Draaag(listH, {
+              dragItemClass: 'demo-h-item'
+            });
+          </script>
+        </div>
+        <div class="line"></div>
+      </div>
 
-<p>注意：ie9以下（包括ie9）不支持dragover动画。</p>
+      <div class="demo3">
+        <h5 class="demo-title">Using Handle & Animation</h5>
+        <div class="demo-handle">
+          <div class="demo-han" id="js_listHan">
+            <div class="item demo-han-item clearfix">
+              <div class="handle"></div>
+              <div class="item-content">item 1</div>
+            </div>
+            <div class="item demo-han-item clearfix">
+              <div class="handle"></div>
+              <div class="item-content">item 2</div>
+            </div>
+            <div class="item demo-han-item clearfix">
+              <div class="handle"></div>
+              <div class="item-content">item 3</div>
+            </div>
+            <div class="item demo-han-item clearfix">
+              <div class="handle"></div>
+              <div class="item-content">item 4</div>
+            </div>
+          </div>
+          <script>
+            var listHan = document.getElementById('js_listHan');
+            var demoHan = new Draaag(listHan, {
+              dragItemClass: 'demo-han-item',
+              handle: 'handle',
+              ifHide: true,
+              ifAnimated: true
+            });
+          </script>
+        </div>
+        <div class="line"></div>
+      </div>
 
-<p>自定义配置<br />
-<a href="demo/demo1.html">demo1</a></p>
+      <div class="demo4">
+        <h5 class="demo-title">Callbacks</h5>
+        <div class="callbacks clearfix">
+          <ul class="demo-cb" id="js_listCb">
+            <li class="item demo-cb-item">item 1</li>
+            <li class="item demo-cb-item">item 2</li>
+            <li class="item demo-cb-item">item 3</li>
+          </ul>
+          <div class="status">
+            <p class="title">Status</p>
+            <p>Start pos: <span id="js_startPos"> </span></p>
+            <p>Current pos: <span id="js_curPos"> </span></p>
+            <p>Drop pos: <span id="js_dropPos"> </span></p>
+          </div>
+        </div>
+      </div>
+      <script>
+        var listCb = document.getElementById('js_listCb');
+        var startPos = document.getElementById('js_startPos'),
+          curPos = document.getElementById('js_curPos'),
+          dropPos = document.getElementById('js_dropPos');
+        var demoCb = new Draaag(listCb, {
+          dragItemClass: 'demo-cb-item',
+          ifAnimated: true,
+          ifHide: true,
+          // Callbacks
+          onDrag: () => {
+            startPos.innerHTML = 'X: ' + demoCb.state.startX + ', Y: ' + demoCb.state.startY;
+          },
+          onMove: () => {
+            curPos.innerHTML = 'X: ' + demoCb.state.curX + ', Y: ' + demoCb.state.curY;
+          },
+          onDrop: () => {
+            dropPos.innerHTML = 'X: ' + demoCb.state.dropX + ', Y: ' + demoCb.state.dropY;
+          }
+        });
+      </script>
 
-<p>css：</p>
+      <p>You can access to the status parameter by using <code class="language-javascript">draaag.state.[parameter]</code>. Here are the parameters that it currently exposed:</p>
+      <ul class="parameters">
+        <li class="parameter">
+          <p><span class="title">direction</span><span class="type">{String}</span></p>
+          <p>The type of the list:</p>
+          <ul class="para-value">
+            <li><strong>vertical</strong>: default value;</li>
+            <li><strong>horizontal</strong>: if one or more of <code class="language-css">float</code>, <code class="language-css">display: inline-block</code>, <code class="language-css">display: inline</code> is applied on the list, the list is considered
+              to be a horizontal list.</li>
+          </ul>
+        </li>
+        <li class="parameter">
+          <p><span class="title">itemCount</span><span class="type">{Number}</span></p>
+          <p>The number of the draggable items.</p>
+        </li>
+        <li class="parameter">
+          <p><span class="title">ifDragging</span><span class="type">{Boolean}</span></p>
+          <p>The value is set to <strong>True</strong> when start dragging, and <strong>False</strong> when the item is dropped.</p>
+        </li>
+        <li class="parameter">
+          <p><span class="title">innerX / innerY</span><span class="type">{Number}</span></p>
+          <p>The initial position of the mouse relative to the dragged item.</p>
+        </li>
+        <li class="parameter">
+          <p><span class="title">startX / startY</span><span class="type">{Number}</span></p>
+          <p>The position of the mouse relative to the viewport when you start dragging.</p>
+        </li>
+        <li class="parameter">
+          <p><span class="title">curX / curY</span><span class="type">{Number}</span></p>
+          <p>The position of the mouse relative to the viewport while dragging.</p>
+        </li>
+        <li class="parameter">
+          <p><span class="title">dropX / dropY</span><span class="type">{Number}</span></p>
+          <p>The position of the mouse relative to the viewport when you drop the dragged item.</p>
+        </li>
+      </ul>
+    </section>
+    <section class="methods">
+      <h5 class="section-title">Methods</h5>
+      <ul class="parameters">
+        <li class="parameter">
+          <p><span class="title">enableDrag()</span></p>
+          <p>Enable the drag feature.</p>
+        </li>
+        <li class="parameter">
+          <p><span class="title">disableDrag()</span></p>
+          <p>Disable the drag feature. Items become undraggable.</p>
+        </li>
+        <li class="parameter">
+          <p><span class="title">update()</span></p>
+          <p>Update the state of the list. This method is useful if you want a dynamic list. Call this function whenever you add a new item to the list.</p>
+        </li>
+      </ul>
 
-<pre><code>.ghost-item{opacity:0.5;}
-</code></pre>
+      <div class="demo5">
+        <div class="demo-methods clearfix">
+          <ul class="demo-met" id="js_listMet">
+            <li class="item demo-met-item">item 1</li>
+            <li class="item demo-met-item">item 2</li>
+            <li class="item demo-met-item">item 3</li>
+          </ul>
+          <div class="control">
+            <button class="btn" id="js_btnDisable">Disable Drag</button>
+            <button class="btn off" id="js_btnEnable">Enable Drag</button>
+            <button class="btn" id="js_btnAddItem">Add Item</button>
+          </div>
+        </div>
 
-<p>js：</p>
-
-<pre><code>var listH = document.getElementById('js_listH'),
-    listV = document.getElementById('js_listV'),
-    dragH = new Drag(listH),
-    dragV = new Drag(listV,{
-            /*自定义拖拽item类名（默认：drag-item）*/
-            dragItemClass: 'draggable',
-
-            /*隐藏选中项*/
+        <script>
+          var listMet = document.getElementById('js_listMet');
+          var btnEnable = document.getElementById('js_btnEnable'),
+            btnDisable = document.getElementById('js_btnDisable'),
+            btnAddItem = document.getElementById('js_btnAddItem');
+          var count = 3;
+          var demoMet = new Draaag(listMet, {
+            dragItemClass: 'demo-met-item',
             ifHide: true,
+          });
 
-            /*自定义拖拽浮层类名（默认：dragElClass)*/
-            dragElClass: 'ghost-item',
+          btnDisable.addEventListener('click', function(e) {
+            btnDisable.className = 'btn off';
+            btnEnable.className = 'btn';
 
-            /*启用拖拽手柄，类名为drag-handle
-            注意：handle必须是拖拽item的子元素（或其本身）*/
-            handle: 'drag-handle',
+            /*禁用拖拽*/
+            demoMet.disableDrag();
+          }, false);
 
-            /*启用dragover动画*/
-            ifAnimated: true
-    });
-</code></pre>
+          btnEnable.addEventListener('click', function(e) {
+            btnEnable.className = 'btn off';
+            btnDisable.className = 'btn';
 
-<h3>callback</h3>
+            /*启用拖拽*/
+            demoMet.enableDrag();
+          }, false);
 
-<ul>
-<li><p><strong>onDrag: function(){}</strong><br />
-回调函数，拖拽开始时执行<br />
-eg：</p>
+          btnAddItem.addEventListener('click', function(e) {
+            var newItem = document.createElement('li');
+            newItem.className = 'item demo-met-item';
+            newItem.innerHTML = 'item ' + ++count;
+            listMet.appendChild(newItem);
 
-<pre><code>    var drag = new Drag(el, {
-        onDrag: function(){  
-        /* this.state.startX: 拖拽开始时pointer水平坐标
-            this.state.startY: 拖拽开始时pointer垂直坐标
-        */  
-        var x = drag.state.startX,
-            y = drag.state.startY;
+            /*更新列表*/
+            demoMet.update();
+          }, false);
+        </script>
+      </div>
+    </section>
 
-        console.log('start position: (' + x + ',' + y +')');
-        }
-    });
-</code></pre></li>
-<li><p><strong>onMove: function(){}</strong><br />
-回调函数，拖拽过程中执行<br />
-eg：  </p>
-
-<pre><code>var drag = new Drag(el, {
-    onMove: function(){
-    /* this.state.curX: 拖拽过程中pointer水平坐标
-        this.state.curY: 拖拽过程中pointer垂直坐标*/
-    var x = drag.state.curX,
-        y = drag.state.curY;
-
-    console.log('current position: (' + x + ',' + y +')');
-    }
-});
-</code></pre></li>
-<li><p><strong>onDrop: function(){}</strong><br />
-回调函数，拖拽释放时执行<br />
-eg：  </p>
-
-<pre><code>var drag = new Drag(el, {
-    onDrop: function(){
-    /* this.state.dropX: 拖拽释放时pointer水平坐标
-        this.state.dropY: 拖拽释放时pointer垂直坐标*/
-    var x = drag.state.dropX,
-        y = drag.state.dropY;
-
-    console.log('drop position: (' + x + ',' + y +')');
-    }
-});
-</code></pre></li>
-</ul>
-
-<p>回调函数调用demo： 
-<a href="demo/demo2.html">demo2</a></p>
-
-<h3>state 状态参数</h3>
-
-<p>记录控件相关参数，可供回调函数调用（eg.<code>drag.state.direction</code>）：  </p>
-
-<ul>
-<li><p><strong>direction {String}</strong><br />
-列表方向，有两种值:</p>
-
-<ul>
-<li>vertical：垂直列表，direction值为'vertical'；</li>
-<li>horizontal：当item项应用了<code>float: left</code>，<code>display: inline-block</code>，<code>display: inline</code>其中一种样式时，列表判断为水平，direction值为'horizontal'。</li>
-</ul></li>
-<li><p><strong>itemCount {Number}</strong><br />
-可拖拽item数目</p></li>
-<li><p><strong>ifDragging {Boolean}</strong><br />
-是否处在拖拽状态。拖拽开始时值为<code>true</code>，释放时值变为<code>false</code>。</p></li>
-<li><p><strong>innerX / innerY {Number}</strong><br />
-拖拽开始时，pointer位于item内部的水平/垂直位置。</p></li>
-<li><p><strong>startX / startY {Number}</strong><br />
-拖拽开始时，pointer的位于视窗的水平/垂直坐标。</p></li>
-<li><p><strong>curX / curY {Number}</strong><br />
-拖拽过程中，pointer位于视窗的水平/垂直坐标。</p></li>
-<li><p><strong>dropX / dropY {Number}</strong><br />
-拖拽释放时，pointer位于视窗的水平/垂直坐标。</p></li>
-</ul>
-
-<h2>Method</h2>
-
-<ul>
-<li><p><strong>enableDrag()</strong><br />
-启用拖拽<br />
-<code>drag.enableDrag();</code></p></li>
-<li><p><strong>disableDrag()</strong><br />
-禁用拖拽<br />
-<code>drag.disableDrag();</code></p></li>
-<li><p><strong>update()</strong><br />
-更新拖拽列表（更新item数目和列表方向）<br />
-<code>drag.update();</code></p></li>
-</ul>
-
-<p>API调用demo：<a href="demo/demo3.html">demo3</a>  </p>
-
+  </div>
 </body>
+
 </html>
-<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

@@ -15,7 +15,7 @@
  * onDrop {Function}: 回调函数，拖拽释放时执行
  */
 
-var Drag = function(el, opts) {
+var Draaag = function(el, opts) {
     var init = function(el, opts) {
         if (!(el && el.nodeType === 1)) {
             console.log('drag target must be elements!');
@@ -427,9 +427,14 @@ var Drag = function(el, opts) {
                 utils._css(d.dragEl, 'z-index', '999');
                 utils._css(d.dragEl, 'cursor', 'move');
 
+                // 清除原来元素设好的margin，浮层不需要带着margin的位移
+                utils._css(d.dragEl, 'margin', '0');
+
+
                 //fixed相对于浏览器窗口进行定位
                 //补上margin造成的位置差
                 margin = utils._getMargin(d.chosenEl);
+                //@TODO: margin设为auto的话就会出现问题
                 oriTop = pointer.clientY - c.pointerY - s.innerY - parseInt(margin.top, 10);
                 oriLeft = pointer.clientX - c.pointerX - s.innerX - parseInt(margin.left, 10);
                 utils._css(d.dragEl, 'top', oriTop);
@@ -575,8 +580,8 @@ var Drag = function(el, opts) {
 
             //处理dragEl跟踪鼠标
             margin = utils._getMargin(d.chosenEl);
-            moveX = x - c.pointerX - s.innerX - parseInt(margin.left, 10);
-            moveY = y - c.pointerY - s.innerY - parseInt(margin.top, 10);
+            moveX = x - c.pointerX - s.innerX;
+            moveY = y - c.pointerY - s.innerY;
             utils._css(d.dragEl, 'top', moveY);
             utils._css(d.dragEl, 'left', moveX);
 
