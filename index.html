@@ -16,10 +16,15 @@
     body {
       margin: 0;
       padding: 0;
-      font-size: 16px;
       font-family: 'Open Sans', sans-serif;
     }
 
+    html{
+      font-size: 62.5%;
+    }
+    body{
+      font-size: 1.6rem/1.4;
+    }
     .clearfix::after {
       content: ' ';
       display: block;
@@ -30,7 +35,8 @@
     }
 
     .container {
-      padding: 0 15em;
+      width: 70%;
+      margin: 0 auto;
     }
 
     header {
@@ -96,24 +102,27 @@
 
     .demos .line {
       display: block;
-      width: 100%;
+
       margin: 2.5em;
       border-bottom: solid 1px #88c3ea;
     }
-
+    .horizontal{
+      height: 100%;
+    }
     .demo-h {
+      text-align: center;
       padding: 0;
-      margin: 0 auto;
-      width: 37em;
     }
 
     .demo-h .item {
+      display: inline-block;
       list-style: none;
-      float: left;
-      width: 5em;
-      height: 5em;
-      margin-left: 1em;
-      line-height: 5em;
+      /*float: left;*/
+      width: 5rem;
+      height: 5rem;
+      margin-left: 1rem;
+      margin-top:1rem;
+      line-height: 5rem;
       background-color: #88c3ea;
       color: #fff;
       font-size: 16px;
@@ -349,7 +358,7 @@
       <h5 class="section-title">Demos</h5>
       <div class="demo2">
         <h5 class="demo-title">Horizontal List</h5>
-        <div class="horizontal">
+        <div class="horizontal clearfix">
           <ul class="demo-h clearfix" id="js_listH">
             <li class="item item1 demo-h-item">1</li>
             <li class="item item2 demo-h-item">2</li>
